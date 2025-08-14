@@ -13,7 +13,7 @@ jobs:
 
     # Correctly call the reusable workflow by providing the full path
     # Make sure 'generate-doc.yml' is the correct filename in your central repo
-    uses: samah603/demo-generate-doc/.github/workflows/generate-doc.yml@main
+    uses: samah603/demo-generate-doc/.github/workflows/generate-doc.yml@demo
 
     with:
       # Pass the tag name as the 'version' input
