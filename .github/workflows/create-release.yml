@@ -3,18 +3,22 @@ name: Create Release and Document
 on:
   push:
     tags:
-      - 'v*' # Trigger เมื่อมีการสร้าง tag เช่น v1.2.3
+      - 'v*' # Trigger on tag push, e.g., v1.2.3
 
 jobs:
-  # เรียกใช้ Reusable Workflow จาก Repo กลาง
   call-doc-generator:
+    # Grant permissions for the job to create a release
     permissions:
       contents: write
-    uses: samah603/demo-generate-doc@main # ระบุ Repo/path/file@branch
+
+    # Correctly call the reusable workflow by providing the full path
+    # Make sure 'generate-doc.yml' is the correct filename in your central repo
+    uses: samah603/demo-generate-doc/.github/workflows/generate-doc.yml@main
+
     with:
-      # ส่งค่า version จาก tag ปัจจุบันไปให้ input ของ Reusable Workflow
+      # Pass the tag name as the 'version' input
       version: ${{ github.ref_name }}
+
+    # Pass down the GITHUB_TOKEN and any other secrets automatically
     secrets:
-      # ส่ง Token ไปให้ Reusable Workflow
-      # GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       inherit
