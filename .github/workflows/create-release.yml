@@ -3,7 +3,7 @@ name: Create Release and Document
 on:
   push:
     tags:
-      - 'v*' # Trigger on tag push, e.g., v1.2.3
+      - '*' # Trigger on all tag
 
 jobs:
   call-doc-generator:
