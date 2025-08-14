@@ -21,4 +21,4 @@ jobs:
 
     # Pass down the GITHUB_TOKEN and any other secrets automatically
     secrets:
-      inherit
+      caller_token: ${{ secrets.GITHUB_TOKEN }}
