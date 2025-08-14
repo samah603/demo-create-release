@@ -17,7 +17,7 @@ jobs:
 
     with:
       # Pass the tag name as the 'version' input
-      # version: ${{ github.ref_name }}
+      version: ${{ github.ref_name }}
       changelog: ${{ github.event.release.body }}
 
     # Pass down the GITHUB_TOKEN and any other secrets automatically
