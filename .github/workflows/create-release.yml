@@ -1,0 +1,17 @@
+name: Create Release and Document
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger เมื่อมีการสร้าง tag เช่น v1.2.3
+
+jobs:
+  # เรียกใช้ Reusable Workflow จาก Repo กลาง
+  call-doc-generator:
+    uses: my-org/central-workflows/.github/workflows/generate-doc.yml@main # ระบุ Repo/path/file@branch
+    with:
+      # ส่งค่า version จาก tag ปัจจุบันไปให้ input ของ Reusable Workflow
+      version: ${{ github.ref_name }}
+    secrets:
+      # ส่ง Token ไปให้ Reusable Workflow
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
