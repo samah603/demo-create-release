@@ -8,7 +8,7 @@ on:
 jobs:
   # เรียกใช้ Reusable Workflow จาก Repo กลาง
   call-doc-generator:
-    uses: my-org/central-workflows/.github/workflows/generate-doc.yml@main # ระบุ Repo/path/file@branch
+    uses: samah603/demo-generate-doc/.github/workflows/generate-doc.yml@main # ระบุ Repo/path/file@branch
     with:
       # ส่งค่า version จาก tag ปัจจุบันไปให้ input ของ Reusable Workflow
       version: ${{ github.ref_name }}
